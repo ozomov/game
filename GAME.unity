@@ -1354,7 +1354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e19d3e788dc55242855a634e6a06116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hourLength: 2
+  gameHourTimer: 0
+  hourLength: 15
 --- !u!4 &1212243885
 Transform:
   m_ObjectHideFlags: 0
@@ -1382,7 +1383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214d45af40f9de2418e14ce538b83fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NeedsController: {fileID: 0}
+  NeedsController: {fileID: 2123648732}
 --- !u!114 &1212243887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1546,7 +1547,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1764,7 +1765,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2461,7 +2462,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

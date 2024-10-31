@@ -27,24 +27,27 @@ public class NeedsController : MonoBehaviour
     }
 
     public void initialize
-        (int food, int happiness, int energy, 
-        int foodTickRate, int happinessTickRate, int energyTickRate, 
+        (int food, int happiness, int energy,
+        int foodTickRate, int happinessTickRate, int energyTickRate,
         DateTime lastTimeFed, DateTime lastTimeHappy, DateTime lastTimeGainedEnegry)
     {
         this.lastTimeFed = lastTimeFed;
         this.lastTimeHappy = lastTimeHappy;
         this.lastTimeGainedEnegry = lastTimeGainedEnegry;
-        this.food = food;
-        this.happiness = happiness;
-        this.energy = energy;
-        this.foodTickRate = 3;
-        this.happinessTickRate = 2;
-        this.energyTickRate = 1;
-        PetUIController.instance.UpdateImages(food, happiness, energy);
+        this.food = food - foodTickRate * TickAmountSinceLastTimeToCurrentTime(lastTimeFed, TimingManager.instance.hourLength);
+        this.happiness = happiness - happinessTickRate * TickAmountSinceLastTimeToCurrentTime(lastTimeHappy, TimingManager.instance.hourLength);
+        this.energy = energy - energyTickRate * TickAmountSinceLastTimeToCurrentTime(lastTimeGainedEnegry, TimingManager.instance.hourLength);
+        this.foodTickRate = foodTickRate;
+        this.happinessTickRate = happinessTickRate;
+        this.energyTickRate = energyTickRate;
+        if (this.food < 0) this.food = 0;
+        if (this.happiness < 0) this.happiness = 0;
+        if (this.energy < 0) this.energy = 0;
+        PetUIController.instance.UpdateImages(this.food, this.happiness, this.energy);
     }
     private void Update()// акое кол-во еды, настроени€ и энергии падает в секунду
     {
-        if (TimingManager.gameHourTimer < 0)
+        if (TimingManager.instance.gameHourTimer < 0)
         {
             ChangeFood(-foodTickRate);
             ChangeHappiness(-happinessTickRate);
@@ -93,4 +96,24 @@ public class NeedsController : MonoBehaviour
         }
         else if (energy > 100) energy = 100;
     }
-}
+
+    public int TickAmountSinceLastTimeToCurrentTime(DateTime lastTime, float tickRateInSeconds)//ѕровер€ем когда последний раз кормили пета и если не играем еда настроение и энерги€ уменьшаютс€ 
+    {
+        DateTime currentDateTime = DateTime.Now;
+        int dayOfYearDifference = currentDateTime.DayOfYear - lastTime.DayOfYear;
+        if (currentDateTime.Year > lastTime.Year || dayOfYearDifference > 7) return 1500;// ≈сли пройдет недел€ с момента последнего кормлени€ = смерть
+
+        int dayDifferenceSecondsAmount = dayOfYearDifference * 86400;
+        if (dayOfYearDifference > 0) return Mathf.RoundToInt(dayDifferenceSecondsAmount / tickRateInSeconds);
+
+        int hourDifferenceSecondsAmount = (currentDateTime.Hour - lastTime.Hour) * 3600;
+        if (hourDifferenceSecondsAmount > 0) return Mathf.RoundToInt(hourDifferenceSecondsAmount / tickRateInSeconds);
+
+        int minuteDifferenceSecondsAmount = (currentDateTime.Minute - lastTime.Minute) * 60;
+        if (minuteDifferenceSecondsAmount > 0) return Mathf.RoundToInt(minuteDifferenceSecondsAmount / tickRateInSeconds);
+
+        int secondsDifferenceAmount = currentDateTime.Second - lastTime.Second;
+        return Mathf.RoundToInt(secondsDifferenceAmount / tickRateInSeconds);
+
+    }
+} 

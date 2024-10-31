@@ -20,7 +20,7 @@ public class DatabaseManager : MonoBehaviour
 
     private void Update()
     {
-        if (TimingManager.gameHourTimer < 0)
+        if (TimingManager.instance.gameHourTimer < 0)
         {
             Pet pet = new Pet
                 (needsController.lastTimeFed.ToString(),
@@ -43,7 +43,7 @@ public class DatabaseManager : MonoBehaviour
                 (pet.food,
                 pet.happiness,
                 pet.energy,
-                10,10,10,
+                3,1,2,
                 DateTime.Parse(pet.lastTimeFed),
                 DateTime.Parse(pet.lastTimeHappy),
                 DateTime.Parse(pet.lastTimeGainedEnegry)
