@@ -1355,7 +1355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameHourTimer: 0
-  hourLength: 15
+  hourLength: 500
 --- !u!4 &1212243885
 Transform:
   m_ObjectHideFlags: 0
@@ -1766,6 +1766,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2123648734}
+        m_TargetAssemblyTypeName: PetController, Assembly-CSharp
+        m_MethodName: Eat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2467,6 +2479,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2123648734}
+        m_TargetAssemblyTypeName: PetController, Assembly-CSharp
+        m_MethodName: Happy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1774904952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3013,6 +3037,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2123648734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2497480248677483902, guid: 43dc6264b8f94f847bff8a6e9699ac0f, type: 3}
+  m_PrefabInstance: {fileID: 5027836894787775932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123648729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e885b96de35b145a037feb197a69e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5027836894787775932
 PrefabInstance:
   m_ObjectHideFlags: 0

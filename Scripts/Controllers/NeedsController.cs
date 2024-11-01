@@ -5,8 +5,7 @@ public class NeedsController : MonoBehaviour
 {
     public int food, happiness, energy;//Еда, настроение, энергия
     public int foodTickRate, happinessTickRate, energyTickRate;// Тик еды, настроения, энергии
-    public DateTime lastTimeFed, lastTimeHappy, lastTimeGainedEnegry;
-
+    public DateTime lastTimeFed, lastTimeHappy, lastTimeGainedEnegry;//Кормим
     private void Awake()
     {
         initialize(100, 100, 100, 3, 1, 2);
